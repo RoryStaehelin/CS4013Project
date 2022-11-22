@@ -21,7 +21,10 @@ public class ChefUserInterface {
             function = Integer.parseInt(Restaurant.getInput());
             switch (function)
             {
-                case 0 -> exit();
+                case 0 -> {
+                    exit();
+                    return;
+                }
                 case 1 -> getOrder();
                 case 2 -> orderReady();
             }

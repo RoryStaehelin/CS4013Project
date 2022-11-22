@@ -30,7 +30,10 @@ public class CustomerUserInterface {
             function = Integer.parseInt(Restaurant.getInput());
             switch (function)
             {
-                case 0 -> exit();
+                case 0 -> {
+                    exit();
+                    return;
+                }
                 case 1 -> makeReservation();
                 case 2 -> cancelReservation();
                 case 3 -> searchForTables();
