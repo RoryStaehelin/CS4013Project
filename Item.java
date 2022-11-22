@@ -1,14 +1,9 @@
-package org.example;
-
 public class Item {
     private String name;
     private String category;
 
     private String description;
     private double price;
-
-    public Item() {
-    }
 
     public Item(String name, String category, String description, double price) {
         this.name = name;
@@ -53,9 +48,4 @@ public class Item {
     public String toString() {
         return String.format("Name: %s\nDescription: %s\nCategory: %s\nPrice: %,.2f", name, description, category, price);
     }
-
-
-
-
-
 }

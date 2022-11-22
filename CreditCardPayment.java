@@ -5,7 +5,6 @@ public class CreditCardPayment extends Bill{
     private String cardExpDate;
     
     public CreditCardPayment(Item[] order,double price, double tip, String paymentType, String cardName, String cardNo, String cardExpDate){
-        super(order,price, tip, paymentType);
         this.cardName = cardName;
         this.cardNo = cardNo;
         this.cardExpDate = cardExpDate;

@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class CashPayment extends Bill{
     private double value;
     private String name;
@@ -19,8 +17,7 @@ public class CashPayment extends Bill{
                                 };
     
                                    
-    public CashPayment(Item[] order,double price, double tip, String paymentType){
-        super(order,price, tip, paymentType);
+    public CashPayment(Bill bill){
+
     }
-    
 }
