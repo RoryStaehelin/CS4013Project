@@ -7,7 +7,7 @@ public class CustomerUserInterface {
     private final String phoneNumber;
     Restaurant restaurant;
 
-    CustomerUserInterface() throws IOException, InterruptedException
+    CustomerUserInterface() throws IOException
     {
         System.out.println("Enter your name:");
         this.name = Restaurant.getInput();
@@ -17,7 +17,7 @@ public class CustomerUserInterface {
         restaurant = new Restaurant(Restaurant.getInput());
         this.run();
     }
-    void run() throws IOException, InterruptedException
+    void run() throws IOException
     {
         int function;
         while (true)
@@ -30,12 +30,11 @@ public class CustomerUserInterface {
             function = Integer.parseInt(Restaurant.getInput());
             switch (function)
             {
-                case 0: exit();
-                case 1: makeReservation();
-                case 2: cancelReservation();
-                case 3: searchForTables();
+                case 0 -> exit();
+                case 1 -> makeReservation();
+                case 2 -> cancelReservation();
+                case 3 -> searchForTables();
             }
-            Thread.sleep(1000);
         }
     }
     void makeReservation()

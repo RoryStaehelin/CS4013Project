@@ -20,6 +20,7 @@ public class Reservation {
         //each reservation is automatically 1 hour long
         this.reservedUntil = reservationTime.plusHours(1);
         this.table = table;
+        System.out.printf("Reservation confirmed for %d people on %s at %s", numOfPeople, reservationDate, reservationTime);
     }
 
 

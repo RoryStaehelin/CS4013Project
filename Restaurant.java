@@ -70,33 +70,33 @@ public class Restaurant {
             price = data.get(i+3);
             i += 3;
             menu.add(new Item(name, category, description, Double.parseDouble(price)));
-            j = i + 1;
+            j = i + 2;
         }
         String id;
         String capacity;
-        for (int i = j; !data.get(i).equals(""); i++)
+        int k = 0;
+        for (; j < data.size() && !data.get(j).equals(""); j++)
         {
-            id = data.get(i);
-            capacity = data.get(i+1);
-            i += 1;
+            id = data.get(j);
+            capacity = data.get(j+1);
+            j += 1;
             tables.add(new Table(Integer.parseInt(id), Integer.parseInt(capacity), this));
-            j = i + 1;
+            k = j + 2;
         }
-        name = "";
         String phoneNumber;
         String numPeople;
         String dateString;
         String timeString;
         String table;
-        for (int i = j; !data.get(i).equals(""); i++)
+        for (; k < data.size() && !data.get(k).equals(""); k++)
         {
-            name = data.get(i);
-            phoneNumber = data.get(i+1);
-            numPeople = data.get(i+2);
-            dateString = data.get(i+3);
-            timeString = data.get(i+4);
-            table = data.get(i+5);
-            i += 5;
+            name = data.get(k);
+            phoneNumber = data.get(k+1);
+            numPeople = data.get(k+2);
+            dateString = data.get(k+3);
+            timeString = data.get(k+4);
+            table = data.get(k+5);
+            k += 5;
             String[] dateArray = dateString.split("-");
             String[] timeArray = timeString.split(":");
             LocalDate date = LocalDate.of(Integer.parseInt(dateArray[0]), Integer.parseInt(dateArray[1]), Integer.parseInt(dateArray[2]));
@@ -232,7 +232,7 @@ public class Restaurant {
     }
     static String getInput()
     {
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     public Item menuSearch(String item)

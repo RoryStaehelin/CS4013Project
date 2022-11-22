@@ -3,13 +3,13 @@ import java.util.ArrayList;
 
 public class ChefUserInterface {
     Restaurant restaurant;
-    ChefUserInterface() throws IOException, InterruptedException
+    ChefUserInterface() throws IOException
     {
         System.out.println("Enter restaurant name:");
         restaurant = new Restaurant(Restaurant.getInput());
         this.run();
     }
-    void run() throws IOException, InterruptedException
+    void run() throws IOException
     {
         int function;
         while (true)
@@ -21,11 +21,10 @@ public class ChefUserInterface {
             function = Integer.parseInt(Restaurant.getInput());
             switch (function)
             {
-                case 0: exit();
-                case 1: getOrder();
-                case 2: orderReady();
+                case 0 -> exit();
+                case 1 -> getOrder();
+                case 2 -> orderReady();
             }
-            Thread.sleep(1000);
         }
     }
     void getOrder()

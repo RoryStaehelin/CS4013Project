@@ -4,7 +4,7 @@ import java.time.LocalTime;
 
 public class StaffUserInterface {
     Restaurant restaurant;
-    StaffUserInterface() throws IOException, InterruptedException
+    StaffUserInterface() throws IOException
     {
         int function;
         System.out.println("Select function:");
@@ -22,7 +22,7 @@ public class StaffUserInterface {
         }
         this.run();
     }
-    void run() throws IOException, InterruptedException
+    void run() throws IOException
     {
         int function;
         while (true)
@@ -42,19 +42,21 @@ public class StaffUserInterface {
             function = Integer.parseInt(Restaurant.getInput());
             switch (function)
             {
-                case 0: exit();
-                case 1: makeReservation();
-                case 2: cancelReservation();
-                case 3: searchForTables();
-                case 4: setOrder();
-                case 5: getOrder();
-                case 6: isReady();
-                case 7: createBill();
-                case 8: getBill();
-                case 9: makePayment();
-                case 10: showStatistics();
+                case 0 -> {
+                    exit();
+                    return;
+                }
+                case 1 -> makeReservation();
+                case 2 -> cancelReservation();
+                case 3 -> searchForTables();
+                case 4 -> setOrder();
+                case 5 -> getOrder();
+                case 6 -> isReady();
+                case 7 -> createBill();
+                case 8 -> getBill();
+                case 9 -> makePayment();
+                case 10 -> showStatistics();
             }
-            Thread.sleep(1000);
         }
     }
     void makeReservation()
@@ -97,7 +99,14 @@ public class StaffUserInterface {
         LocalTime time = LocalTime.now();
         System.out.println("Enter number of people:");
         Table table = restaurant.searchForTables(Integer.parseInt(Restaurant.getInput()), date, time);
-        System.out.printf("Table %d is available", table.getId());
+        if (table == null)
+        {
+            System.out.println("No tables available");
+        }
+        else
+        {
+            System.out.printf("Table %d is available", table.getId());
+        }
     }
     void setOrder()
     {
