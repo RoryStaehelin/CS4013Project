@@ -21,7 +21,7 @@ public class Staff extends Person{
         return staffID;
     }
     
-    public void setStaffID(){
+    public void setStaffID(String staffID){
         this.staffID = staffID;
     }
     
@@ -29,7 +29,7 @@ public class Staff extends Person{
         return salary;
     }
     
-    public void setSalary(){
+    public void setSalary(double salary){
         this.salary = salary;
     }
     
@@ -37,7 +37,7 @@ public class Staff extends Person{
         return password;
     }
     
-    public void setPassword(){
+    public void setPassword(String password){
         this.password = password;
     }
     
