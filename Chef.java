@@ -1,21 +1,24 @@
 public class Chef extends Person{
-    private String idNumber;
+    private String chefId;
     private String password;
     private double salary;
+    
+    public Chef(){
+    }
 
     public Chef(String name, String phoneNumber, String idNumber, String password, double salary){
         super(name, phoneNumber);
-        this.idNumber = idNumber;
+        this.chefId = chefId;
         this.password = password;
         this.salary = salary;
     }
 
-    public String getIdNumber() {
-        return idNumber;
+    public String getChefId() {
+        return chefId;
     }
 
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
+    public void setChefId(String chefId) {
+        this.chefId = chefId;
     }
 
     public String getPassword() {
@@ -36,6 +39,6 @@ public class Chef extends Person{
 
     @Override
     public String toString() {
-        return super.toString() + String.format("ID number: %s\nSalary: %d") ;
+        return super.toString() + String.format("ID number: %s\nSalary: %d", chefId, salary) ;
     }
 }
