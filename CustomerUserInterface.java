@@ -1,11 +1,16 @@
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+/**
+ * CustomerUnserInterface class is used to allow customers to interact with the restuarant reservation 
+ * system.
+ * @author rory
+ */
 public class CustomerUserInterface {
+//Private data feilds    
     Customer customer;
     Restaurant restaurant;
-
+//Method to run customer user interface asking a customer to enter their details
     CustomerUserInterface() throws IOException
     {
         System.out.println("Enter your name:");
@@ -17,6 +22,7 @@ public class CustomerUserInterface {
         restaurant = new Restaurant(Restaurant.getInput());
         this.run();
     }
+//Method allowing customers to select whsat function to execute    
     private void run() throws IOException
     {
         int function;
@@ -40,6 +46,7 @@ public class CustomerUserInterface {
             }
         }
     }
+//Method to create a reservation for a certain amount of people and for a  certaion date and time    
     private void makeReservation()
     {
         System.out.println("Enter number of people:");
@@ -56,6 +63,7 @@ public class CustomerUserInterface {
         Reservation reservation = new Reservation(customer.getName(), customer.getPhoneNumber(), numOfPeople, date, time, table.getId());
         restaurant.makeReservation(reservation);
     }
+//Method to cancel an existing reservation    
     private void cancelReservation()
     {
         System.out.println("Enter reservation date (dd/mm/yyyy):");
@@ -68,6 +76,7 @@ public class CustomerUserInterface {
         LocalTime time = LocalTime.of(Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1]));
         restaurant.cancelReservation(customer.getPhoneNumber(), date, time);
     }
+//Method to search for avalabke tables for a certain number of people ata certain times    
     private void searchForTables()
     {
         LocalDate date = LocalDate.now();
@@ -75,6 +84,7 @@ public class CustomerUserInterface {
         System.out.println("Enter number of people:");
         restaurant.searchForTables(Integer.parseInt(Restaurant.getInput()), date, time);
     }
+//Exiting the customer user interface    
     private void exit() throws IOException
     {
         restaurant.saveData();
