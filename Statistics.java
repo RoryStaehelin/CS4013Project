@@ -1,13 +1,10 @@
-import java.time.LocalDate;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList; 
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Statistics {
-    private String statistic;
-    
     Statistics()
     {
         String line = "";
@@ -16,17 +13,13 @@ public class Statistics {
             while((line = br.readLine()) != null){
                 String[] values = line.split(",");
                 System.out.println("Date : " + values[0] + ", "
-                                 + "Amount: " + values[1]);             
+                        + "Amount: " + values[1]);
             }
-            
-        } catch(FileNotFoundException e){
-            e.printStackTrace();            
         } catch(IOException e){
             e.printStackTrace();
         }
-        
     }
-    
+
     Statistics(LocalDate startDate, LocalDate endDate)
     {
         ArrayList<String> data = new ArrayList<>();
@@ -40,19 +33,11 @@ public class Statistics {
                     data.add(values[0] + ", " + values[1]);
                 }
                 System.out.println(data);
-                
+
             }
-            
-        } catch(FileNotFoundException e){
-            e.printStackTrace();            
         } catch(IOException e){
             e.printStackTrace();
         }
-        
-    }
-    
-    public String getStatistic()
-    {
-        return statistic;
+
     }
 }

@@ -168,12 +168,10 @@ public class StaffUserInterface {
             LocalDate startDate = LocalDate.of(Integer.parseInt(startDateArray[2]), Integer.parseInt(startDateArray[1]), Integer.parseInt(startDateArray[0]));
             LocalDate endDate = LocalDate.of(Integer.parseInt(endDateArray[2]), Integer.parseInt(endDateArray[1]), Integer.parseInt(endDateArray[0]));
             Statistics statistic = new Statistics(startDate, endDate);
-            System.out.println(statistic.getStatistic());
         }
         else
         {
             Statistics statistic = new Statistics();
-            System.out.println(statistic.getStatistic());
         }
     }
     void exit() throws IOException

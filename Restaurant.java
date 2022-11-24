@@ -241,7 +241,7 @@ public class Restaurant {
         fileWriter.append(date.toString());
         fileWriter.append(",");
         fileWriter.append(String.valueOf(incomeForDay));
-        fileWriter.append(",");
+        fileWriter.append("\n");
         fileWriter.close();
     }
     ArrayList<Item> getMenu()
