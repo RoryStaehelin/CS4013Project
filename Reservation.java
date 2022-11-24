@@ -1,7 +1,12 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+/**
+ * Reservation class is used to allow customers and resturant staff
+ * to create reservations for tables between certain times.
+ * @author killian
+ */
 public class Reservation {
+//Private data fields    
     private String name;
     private String phoneNumber;
     private int numOfPeople;
@@ -9,7 +14,8 @@ public class Reservation {
     private LocalTime reservationTime;
     private LocalTime reservedUntil;
     private int table;
-
+    
+//constructor for reservations
     public Reservation(String name, String phoneNumber, int numOfPeople, LocalDate reservationDate,
                        LocalTime reservationTime, int table) {
         this.name = name;
@@ -23,9 +29,7 @@ public class Reservation {
         System.out.printf("Reservation confirmed for %d people on %s at %s", numOfPeople, reservationDate, reservationTime);
     }
 
-
-    //Getters and setters
-
+//Accessor methods
     public String getName() {
         return name;
     }
