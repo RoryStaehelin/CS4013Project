@@ -54,33 +54,5 @@ public class Reservation {
     {
         return reservedUntil;
     }
-    
-    public void setName(String name) {                                              
-        this.name = name;                                                           
-    }                                                                               
-                                                                                    
-    public void setPhoneNumber(String phoneNumber) {                                
-        this.phoneNumber = phoneNumber;                                             
-    }                                                                               
-                                                                                    
-    public void setNumOfPeople(int numOfPeople) {                                   
-        this.numOfPeople = numOfPeople;                                             
-    }                                                                               
-                                                                                    
-    public void setReservationDate(LocalDate reservationDate) {                     
-        this.reservationDate = reservationDate;                                     
-    }                                                                               
-                                                                                    
-    public void setReservationTime(LocalTime reservationTime) {                     
-        this.reservationTime = reservationTime;                                     
-    }                                                                               
-                                                                                    
-    public void setReservedUntil(LocalTime reservedUntil) {                         
-        this.reservedUntil = reservedUntil;                                         
-    }                                                                               
-                                                                                    
-    public void setTable(int table) {                                               
-        this.table = table;                                                         
-    }                                                                               
 
 }

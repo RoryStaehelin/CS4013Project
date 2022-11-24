@@ -3,16 +3,16 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class CustomerUserInterface {
-    private final String name;
-    private final String phoneNumber;
+    Customer customer;
     Restaurant restaurant;
 
     CustomerUserInterface() throws IOException
     {
         System.out.println("Enter your name:");
-        this.name = Restaurant.getInput();
+        String name = Restaurant.getInput();
         System.out.println("Enter phone number:");
-        this.phoneNumber = Restaurant.getInput();
+        String phoneNumber = Restaurant.getInput();
+        customer = new Customer(name, phoneNumber);
         System.out.println("Enter restaurant name:");
         restaurant = new Restaurant(Restaurant.getInput());
         this.run();
@@ -53,7 +53,7 @@ public class CustomerUserInterface {
         String[] timeArray = stringTime.split(":");
         LocalTime time = LocalTime.of(Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1]));
         Table table = restaurant.searchForTables(numOfPeople, date, time);
-        Reservation reservation = new Reservation(name, phoneNumber, numOfPeople, date, time, table.getId());
+        Reservation reservation = new Reservation(customer.getName(), customer.getPhoneNumber(), numOfPeople, date, time, table.getId());
         restaurant.makeReservation(reservation);
     }
     void cancelReservation()
@@ -66,7 +66,7 @@ public class CustomerUserInterface {
         String stringTime = Restaurant.getInput();
         String[] timeArray = stringTime.split(":");
         LocalTime time = LocalTime.of(Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1]));
-        restaurant.cancelReservation(phoneNumber, date, time);
+        restaurant.cancelReservation(customer.getPhoneNumber(), date, time);
     }
     void searchForTables()
     {
@@ -78,6 +78,5 @@ public class CustomerUserInterface {
     void exit() throws IOException
     {
         restaurant.saveData();
-        restaurant.saveIncome();
     }
 }

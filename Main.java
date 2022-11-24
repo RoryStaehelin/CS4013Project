@@ -2,7 +2,7 @@ import java.io.IOException;
 
 public class Main
 {
-    public static void main(String[] args) throws IOException, InterruptedException
+    public static void main(String[] args) throws IOException
     {
         int mode;
         System.out.println("Sign in as:");
@@ -18,15 +18,15 @@ public class Main
         }
         else if (mode == 1)
         {
-            CustomerUserInterface customerUI = new CustomerUserInterface();
+            new CustomerUserInterface();
         }
         if (mode == 2)
         {
-            StaffUserInterface staffUI = new StaffUserInterface();
+            new StaffUserInterface();
         }
         else if (mode == 3)
         {
-            ChefUserInterface chefUI = new ChefUserInterface();
+            new ChefUserInterface();
         }
     }
 }

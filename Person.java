@@ -1,33 +1,33 @@
 public class Person {
     private String name;
     private String phoneNumber;
+    private String type;
 
-    public Person() {
-    }
-
-    public Person(String name, String phoneNumber) {
+    public Person(String name, String phoneNumber, String type) {
         this.name = name;
-        this.name = phoneNumber;
+        this.phoneNumber = phoneNumber;
+        this.type = type;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getId()
+    {
+        return null;
+    }
+    public String getPassword()
+    {
+        return null;
     }
 
-    @Override
-    public String toString() {
-        return String.format("Name: %s\nPhone Number: %s\n", name, phoneNumber);
+    public String getType()
+    {
+        return type;
     }
 }

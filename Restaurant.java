@@ -10,6 +10,7 @@ public class Restaurant {
     private ArrayList<Item> menu = new ArrayList<>();
     private ArrayList<Table> tables = new ArrayList<>();
     private ArrayList<Reservation> reservations = new ArrayList<>();
+    private ArrayList<Person> people = new ArrayList<>();
     private double incomeForDay;
     private static Scanner scanner = new Scanner(System.in);
     //Creates new restaurant
@@ -57,12 +58,33 @@ public class Restaurant {
                 data.addAll(Arrays.asList(values));
             }
         }
-        int j = 0;
+        int i = 0;
+        String type;
         String name;
+        String phoneNumber;
+        String id;
+        String password;
+        for (int m = 0; !data.get(m).equals(""); m++)
+        {
+            type = data.get(m);
+            name = data.get(m+1);
+            phoneNumber = data.get(m+2);
+            id = data.get(m+3);
+            password = data.get(m+4);
+            m += 4;
+            if (type.equals("staff"))
+            {
+                people.add(new Staff(name, phoneNumber, id, password));
+            }
+            i = m + 2;
+        }
+
+
+        int j = 0;
         String category;
         String description;
         String price;
-        for (int i = 0; !data.get(i).equals(""); i++)
+        for (; !data.get(i).equals(""); i++)
         {
             name = data.get(i);
             category = data.get(i+1);
@@ -72,7 +94,6 @@ public class Restaurant {
             menu.add(new Item(name, category, description, Double.parseDouble(price)));
             j = i + 2;
         }
-        String id;
         String capacity;
         int k = 0;
         for (; j < data.size() && !data.get(j).equals(""); j++)
@@ -83,7 +104,6 @@ public class Restaurant {
             tables.add(new Table(Integer.parseInt(id), Integer.parseInt(capacity), this));
             k = j + 2;
         }
-        String phoneNumber;
         String numPeople;
         String dateString;
         String timeString;
@@ -112,6 +132,10 @@ public class Restaurant {
     void cancelReservation(String phoneNumber, LocalDate date, LocalTime time)
     {
         reservations.removeIf(reservation -> reservation.getPhoneNumber().equals(phoneNumber) && reservation.getDate().equals(date) && reservation.getTime().equals(time));
+    }
+    void addPerson(Person person)
+    {
+        people.add(person);
     }
     void payBill(Table t)
     {
@@ -155,6 +179,20 @@ public class Restaurant {
     void saveData() throws IOException {
         File file = new File(this.name + ".csv");
         FileWriter fileWriter = new FileWriter(file);
+        for (Person person : people)
+        {
+            fileWriter.append(person.getType());
+            fileWriter.append(",");
+            fileWriter.append(person.getName());
+            fileWriter.append(",");
+            fileWriter.append(person.getPhoneNumber());
+            fileWriter.append(",");
+            fileWriter.append(person.getId());
+            fileWriter.append(",");
+            fileWriter.append(person.getPassword());
+            fileWriter.append(",");
+        }
+        fileWriter.append(",");
         for (Item item : menu)
         {
             fileWriter.append(item.getName());
@@ -199,7 +237,7 @@ public class Restaurant {
     void saveIncome() throws IOException {
         LocalDate date = LocalDate.now();
         File file = new File("statistics.csv");
-        FileWriter fileWriter = new FileWriter(file);
+        FileWriter fileWriter = new FileWriter(file, true);
         fileWriter.append(date.toString());
         fileWriter.append(",");
         fileWriter.append(String.valueOf(incomeForDay));
@@ -245,5 +283,17 @@ public class Restaurant {
             }
         }
         throw new RuntimeException("Invalid Item");
+    }
+
+    public boolean logIn(String id, String password)
+    {
+        for (Person person : people)
+        {
+            if (id.equals(person.getId()))
+            {
+                return person.getPassword().equals(password);
+            }
+        }
+        return false;
     }
 }

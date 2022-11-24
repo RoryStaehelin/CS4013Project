@@ -4,8 +4,10 @@ import java.time.LocalTime;
 
 public class StaffUserInterface {
     Restaurant restaurant;
+    Staff staff;
     StaffUserInterface() throws IOException
     {
+        this.logIn();
         int function;
         System.out.println("Select function:");
         System.out.println("(1) Create restaurant");
@@ -177,6 +179,33 @@ public class StaffUserInterface {
     void exit() throws IOException
     {
         restaurant.saveData();
-        restaurant.saveIncome();
+    }
+    private void logIn()
+    {
+        System.out.println("Do you have an account? (y/n)");
+        if (Restaurant.getInput().equals("y"))
+        {
+            System.out.println("Enter id:");
+            String id = Restaurant.getInput();
+            System.out.println("Enter password:");
+            String password = Restaurant.getInput();
+            if (!restaurant.logIn(id, password))
+            {
+                throw new RuntimeException("Invalid login");
+            }
+        }
+        else
+        {
+            System.out.println("Enter name:");
+            String name = Restaurant.getInput();
+            System.out.println("Enter phone number:");
+            String phoneNumber = Restaurant.getInput();
+            System.out.println("Enter id:");
+            String id = Restaurant.getInput();
+            System.out.println("Enter password:");
+            String password = Restaurant.getInput();
+            staff = new Staff(name, phoneNumber, id, password);
+            restaurant.addPerson(staff);
+        }
     }
 }
