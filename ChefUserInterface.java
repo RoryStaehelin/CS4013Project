@@ -1,15 +1,15 @@
 import java.io.IOException;
 import java.util.ArrayList;
 /**
- * ChefUserInterface class is used to control the interface for the chefs
- * allowing them to interact with the restaurant.
+ * The ChefUserInterface class allows the chefs of the restaurant 
+ * to interact with the restaurant managment system.
  * @author rory
  */
 public class ChefUserInterface {
 //Private data feilds     
     Restaurant restaurant;
     Chef chef;
-//Chef user interface constructor    
+//Method to start chef user interface    
     ChefUserInterface() throws IOException
     {
         this.logIn();
@@ -17,7 +17,7 @@ public class ChefUserInterface {
         restaurant = new Restaurant(Restaurant.getInput());
         this.run();
     }
-//Login method to check login details
+//Login method that needs a password and id
     private void logIn()
     {
         System.out.println("Do you have an account? (y/n)");
@@ -46,7 +46,7 @@ public class ChefUserInterface {
             restaurant.addPerson(chef);
         }
     }
-//allow chef user to select what functions to execute
+//Method to allow chef user to select what functions to execute
     private void run() throws IOException
     {
         int function;
@@ -68,7 +68,7 @@ public class ChefUserInterface {
             }
         }
     }
-//get order method    
+//method to get order     
     private void getOrder()
     {
         System.out.println("Select table:");
