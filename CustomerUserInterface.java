@@ -22,7 +22,7 @@ public class CustomerUserInterface {
         restaurant = new Restaurant(Restaurant.getInput());
         this.run();
     }
-//Method allowing customers to select whsat function to execute    
+//Method allowing customers to select what function to execute    
     private void run() throws IOException
     {
         int function;
@@ -46,7 +46,7 @@ public class CustomerUserInterface {
             }
         }
     }
-//Method to create a reservation for a certain amount of people and for a  certaion date and time    
+//Method to create a reservation for a certain amount of people and for a certaion date and time    
     private void makeReservation()
     {
         System.out.println("Enter number of people:");
@@ -76,7 +76,7 @@ public class CustomerUserInterface {
         LocalTime time = LocalTime.of(Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1]));
         restaurant.cancelReservation(customer.getPhoneNumber(), date, time);
     }
-//Method to search for avalabke tables for a certain number of people ata certain times    
+//Method to search for available tables for a certain number of people at certain times    
     private void searchForTables()
     {
         LocalDate date = LocalDate.now();
@@ -84,7 +84,7 @@ public class CustomerUserInterface {
         System.out.println("Enter number of people:");
         restaurant.searchForTables(Integer.parseInt(Restaurant.getInput()), date, time);
     }
-//Exiting the customer user interface    
+//Method for exiting the customer user interface    
     private void exit() throws IOException
     {
         restaurant.saveData();
