@@ -1,6 +1,11 @@
 import java.util.ArrayList;
-
+/**
+ * Table class is used to creat and store the tables of the restaurant
+ * as objects.
+ * @author killian
+ */
 public class Table {
+//Private data fields    
     private int id;
     private int capacity;
     private boolean isFree;
@@ -8,7 +13,8 @@ public class Table {
     private Restaurant restaurant;
     private Bill bill;
     private ArrayList<Item> order;
-
+    
+//Table constructor
     public Table(int id, int capacity, Restaurant restaurant) {
         this.id = id;
         this.capacity = capacity;
@@ -18,7 +24,15 @@ public class Table {
         this.restaurant = restaurant;
         isReady = false;
     }
-
+    
+//method to create bill for the table    
+   public void createBill()
+    {
+        System.out.println("Enter tip:");
+        String tip = Restaurant.getInput();
+        this.bill = new Bill(order, Integer.parseInt(tip));
+    }    
+//Accessor and Mutator methods
     public void setOrder()
     {
         System.out.println(restaurant.getMenu());
@@ -43,13 +57,6 @@ public class Table {
     public ArrayList<Item> getOrder()
     {
         return order;
-    }
-
-    public void createBill()
-    {
-        System.out.println("Enter tip:");
-        String tip = Restaurant.getInput();
-        this.bill = new Bill(order, Integer.parseInt(tip));
     }
 
     public int getId() {
@@ -80,12 +87,14 @@ public class Table {
     {
         return bill;
     }
-
+    
+//To string method to convert table object to string
     @Override
     public String toString() {
         return String.format("TableId: %s.\nTable capacity: %d.\nTable is free: %b", id, capacity, isFree);
     }
-
+    
+//Methods to change the status of an order
     public boolean isReady()
     {
         return isReady;
