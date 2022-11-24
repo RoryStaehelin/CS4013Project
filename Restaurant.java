@@ -1,3 +1,5 @@
+// Author: Rory Staehelin 21334161
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,6 +15,8 @@ public class Restaurant {
     private ArrayList<Person> people = new ArrayList<>();
     private double incomeForDay;
     private static Scanner scanner = new Scanner(System.in);
+
+
     //Creates new restaurant
     Restaurant() throws IOException {
         boolean finished = false;
@@ -44,6 +48,9 @@ public class Restaurant {
         saveData();
         System.out.println("Setup complete");
     }
+
+
+
     //Loads restaurant from csv file
     Restaurant(String restaurantName) throws IOException
     {
@@ -125,18 +132,26 @@ public class Restaurant {
         }
         System.out.println("Setup complete");
     }
+
+    // Add a reservation
     void makeReservation(Reservation reservation)
     {
         reservations.add(reservation);
     }
+
+    // Cancel a reservation
     void cancelReservation(String phoneNumber, LocalDate date, LocalTime time)
     {
         reservations.removeIf(reservation -> reservation.getPhoneNumber().equals(phoneNumber) && reservation.getDate().equals(date) && reservation.getTime().equals(time));
     }
+
+    // Add a member of staff
     void addPerson(Person person)
     {
         people.add(person);
     }
+
+    // Pay a bill
     void payBill(Table t)
     {
         double payment = t.getBill().pay();
@@ -146,6 +161,8 @@ public class Restaurant {
         tables.add(new Table(id, capacity, this));
         incomeForDay += payment;
     }
+
+    // Search for table for specified number of people and time/date
     Table searchForTables(int number, LocalDate date, LocalTime time)
     {
         ArrayList<Table> adequateTables = new ArrayList<>();
@@ -176,6 +193,8 @@ public class Restaurant {
         }
         return currentTable;
     }
+
+    // Save data to (Current Restaurant).csv file
     void saveData() throws IOException {
         File file = new File(this.name + ".csv");
         FileWriter fileWriter = new FileWriter(file);
@@ -234,6 +253,8 @@ public class Restaurant {
         fileWriter.close();
         saveIncome();
     }
+
+    // Save income to statistics.csv
     void saveIncome() throws IOException {
         LocalDate date = LocalDate.now();
         File file = new File("statistics.csv");
@@ -244,14 +265,20 @@ public class Restaurant {
         fileWriter.append("\n");
         fileWriter.close();
     }
+
+    // Returns menu
     ArrayList<Item> getMenu()
     {
         return menu;
     }
+
+    // Returns table specified by number
     Table searchTable(String tableNum)
     {
         return searchTable(Integer.parseInt(tableNum));
     }
+
+    // Returns table specified by number
     Table searchTable(int tableNum)
     {
         Table table = null;
@@ -268,11 +295,14 @@ public class Restaurant {
         }
         return table;
     }
+
+    // Gets user input
     static String getInput()
     {
         return scanner.nextLine();
     }
 
+    // Returns specified menu item
     public Item menuSearch(String item)
     {
         for (Item i : menu)
@@ -285,6 +315,7 @@ public class Restaurant {
         throw new RuntimeException("Invalid Item");
     }
 
+    // Logs in using id and password
     public boolean logIn(String id, String password)
     {
         for (Person person : people)
