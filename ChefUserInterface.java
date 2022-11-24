@@ -41,7 +41,7 @@ public class ChefUserInterface {
         }
     }
 
-    void run() throws IOException
+    private void run() throws IOException
     {
         int function;
         while (true)
@@ -62,7 +62,7 @@ public class ChefUserInterface {
             }
         }
     }
-    void getOrder()
+    private void getOrder()
     {
         System.out.println("Select table:");
         Table table = restaurant.searchTable(Restaurant.getInput());
@@ -72,13 +72,13 @@ public class ChefUserInterface {
             System.out.println(item.getName());
         }
     }
-    void orderReady()
+    private void orderReady()
     {
         System.out.println("Select table:");
         Table table = restaurant.searchTable(Restaurant.getInput());
         table.setReady(true);
     }
-    void exit() throws IOException
+    private void exit() throws IOException
     {
         restaurant.saveData();
     }

@@ -24,7 +24,7 @@ public class StaffUserInterface {
         }
         this.run();
     }
-    void run() throws IOException
+    private void run() throws IOException
     {
         int function;
         while (true)
@@ -61,7 +61,7 @@ public class StaffUserInterface {
             }
         }
     }
-    void makeReservation()
+    private void makeReservation()
     {
         System.out.println("Enter name:");
         String name = Restaurant.getInput();
@@ -81,7 +81,7 @@ public class StaffUserInterface {
         Reservation reservation = new Reservation(name, phoneNum, numOfPeople, date, time, table.getId());
         restaurant.makeReservation(reservation);
     }
-    void cancelReservation()
+    private void cancelReservation()
     {
         System.out.println("Enter phone number:");
         String phoneNum = Restaurant.getInput();
@@ -95,7 +95,7 @@ public class StaffUserInterface {
         LocalTime time = LocalTime.of(Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1]));
         restaurant.cancelReservation(phoneNum, date, time);
     }
-    void searchForTables()
+    private void searchForTables()
     {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
@@ -110,19 +110,19 @@ public class StaffUserInterface {
             System.out.printf("Table %d is available", table.getId());
         }
     }
-    void setOrder()
+    private void setOrder()
     {
         System.out.println("Enter table number:");
         Table table = restaurant.searchTable(Restaurant.getInput());
         table.setOrder();
     }
-    void getOrder()
+    private void getOrder()
     {
         System.out.println("Enter table number:");
         Table table = restaurant.searchTable(Restaurant.getInput());
         System.out.println(table.getOrder());
     }
-    void isReady()
+    private void isReady()
     {
         System.out.println("Enter table number:");
         Table table = restaurant.searchTable(Restaurant.getInput());
@@ -135,26 +135,26 @@ public class StaffUserInterface {
             System.out.println("Order is not ready");
         }
     }
-    void createBill()
+    private void createBill()
     {
         System.out.println("Enter table number:");
         Table table = restaurant.searchTable(Restaurant.getInput());
         table.createBill();
     }
-    void getBill()
+    private void getBill()
     {
         System.out.println("Enter table number:");
         Table table = restaurant.searchTable(Restaurant.getInput());
         Bill bill = table.getBill();
         System.out.println(bill);
     }
-    void makePayment()
+    private void makePayment()
     {
         System.out.println("Enter table number:");
         Table table = restaurant.searchTable(Restaurant.getInput());
         restaurant.payBill(table);
     }
-    void showStatistics()
+    private void showStatistics()
     {
         System.out.println("Select (1)total stats or (2)specific period:");
         if (Restaurant.getInput().equals("2"))
@@ -167,14 +167,14 @@ public class StaffUserInterface {
             String[] endDateArray = endDateString.split("/");
             LocalDate startDate = LocalDate.of(Integer.parseInt(startDateArray[2]), Integer.parseInt(startDateArray[1]), Integer.parseInt(startDateArray[0]));
             LocalDate endDate = LocalDate.of(Integer.parseInt(endDateArray[2]), Integer.parseInt(endDateArray[1]), Integer.parseInt(endDateArray[0]));
-            Statistics statistic = new Statistics(startDate, endDate);
+            new Statistics(startDate, endDate);
         }
         else
         {
-            Statistics statistic = new Statistics();
+            new Statistics();
         }
     }
-    void exit() throws IOException
+    private void exit() throws IOException
     {
         restaurant.saveData();
     }

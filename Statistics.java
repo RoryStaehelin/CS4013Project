@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Statistics {
-    Statistics()
+    public Statistics()
     {
         String line = "";
         try{
@@ -20,7 +20,7 @@ public class Statistics {
         }
     }
 
-    Statistics(LocalDate startDate, LocalDate endDate)
+    public Statistics(LocalDate startDate, LocalDate endDate)
     {
         ArrayList<String> data = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("statistics.csv"))) {

@@ -17,7 +17,7 @@ public class CustomerUserInterface {
         restaurant = new Restaurant(Restaurant.getInput());
         this.run();
     }
-    void run() throws IOException
+    private void run() throws IOException
     {
         int function;
         while (true)
@@ -40,7 +40,7 @@ public class CustomerUserInterface {
             }
         }
     }
-    void makeReservation()
+    private void makeReservation()
     {
         System.out.println("Enter number of people:");
         int numOfPeople = Integer.parseInt(Restaurant.getInput());
@@ -56,7 +56,7 @@ public class CustomerUserInterface {
         Reservation reservation = new Reservation(customer.getName(), customer.getPhoneNumber(), numOfPeople, date, time, table.getId());
         restaurant.makeReservation(reservation);
     }
-    void cancelReservation()
+    private void cancelReservation()
     {
         System.out.println("Enter reservation date (dd/mm/yyyy):");
         String stringDate = Restaurant.getInput();
@@ -68,14 +68,14 @@ public class CustomerUserInterface {
         LocalTime time = LocalTime.of(Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1]));
         restaurant.cancelReservation(customer.getPhoneNumber(), date, time);
     }
-    void searchForTables()
+    private void searchForTables()
     {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
         System.out.println("Enter number of people:");
         restaurant.searchForTables(Integer.parseInt(Restaurant.getInput()), date, time);
     }
-    void exit() throws IOException
+    private void exit() throws IOException
     {
         restaurant.saveData();
     }
