@@ -1,10 +1,16 @@
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+/**
+ * The StaffUserInterface class allows the staff of the restaurant to interact with the
+ * restaurant management system
+ * @author rory
+ */
 public class StaffUserInterface {
+//Private data fields    
     Restaurant restaurant;
     Staff staff;
+//Method for staff to login to the system    
     StaffUserInterface() throws IOException
     {
         this.logIn();
@@ -24,6 +30,7 @@ public class StaffUserInterface {
         }
         this.run();
     }
+//Method to allow resturant staff to select what functions they want to execute    
     private void run() throws IOException
     {
         int function;
@@ -61,6 +68,7 @@ public class StaffUserInterface {
             }
         }
     }
+//Method allowing staff to create reservations for customers    
     private void makeReservation()
     {
         System.out.println("Enter name:");
@@ -81,6 +89,7 @@ public class StaffUserInterface {
         Reservation reservation = new Reservation(name, phoneNum, numOfPeople, date, time, table.getId());
         restaurant.makeReservation(reservation);
     }
+//Method allowing staff to cancel existing reservations    
     private void cancelReservation()
     {
         System.out.println("Enter phone number:");
@@ -95,6 +104,7 @@ public class StaffUserInterface {
         LocalTime time = LocalTime.of(Integer.parseInt(timeArray[0]), Integer.parseInt(timeArray[1]));
         restaurant.cancelReservation(phoneNum, date, time);
     }
+//Method allowing staff to search for free tables at a certain time and with a certain capacity    
     private void searchForTables()
     {
         LocalDate date = LocalDate.now();
@@ -110,6 +120,7 @@ public class StaffUserInterface {
             System.out.printf("Table %d is available", table.getId());
         }
     }
+//Methods to set and get the order of a certain table    
     private void setOrder()
     {
         System.out.println("Enter table number:");
@@ -122,6 +133,7 @@ public class StaffUserInterface {
         Table table = restaurant.searchTable(Restaurant.getInput());
         System.out.println(table.getOrder());
     }
+//Method to check if a certain order is ready    
     private void isReady()
     {
         System.out.println("Enter table number:");
@@ -135,12 +147,14 @@ public class StaffUserInterface {
             System.out.println("Order is not ready");
         }
     }
+//Methods to create bill for table     
     private void createBill()
     {
         System.out.println("Enter table number:");
         Table table = restaurant.searchTable(Restaurant.getInput());
         table.createBill();
     }
+//Method to get bill for table    
     private void getBill()
     {
         System.out.println("Enter table number:");
@@ -148,12 +162,14 @@ public class StaffUserInterface {
         Bill bill = table.getBill();
         System.out.println(bill);
     }
+//Method to pay the bill    
     private void makePayment()
     {
         System.out.println("Enter table number:");
         Table table = restaurant.searchTable(Restaurant.getInput());
         restaurant.payBill(table);
     }
+//Method to show either the total statistics or statistics between certain time periods    
     private void showStatistics()
     {
         System.out.println("Select (1)total stats or (2)specific period:");
@@ -174,10 +190,12 @@ public class StaffUserInterface {
             new Statistics();
         }
     }
+//Method to exit the StaffUserInterface    
     private void exit() throws IOException
     {
         restaurant.saveData();
     }
+//Method to login to the Staff user interface that asks for an id and password    
     private void logIn()
     {
         System.out.println("Do you have an account? (y/n)");
