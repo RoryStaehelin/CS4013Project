@@ -244,8 +244,6 @@ public class Restaurant {
             fileWriter.append(",");
             fileWriter.append(reservation.getTime().toString());
             fileWriter.append(",");
-            fileWriter.append(reservation.getReservedUntil().toString());
-            fileWriter.append(",");
             fileWriter.append(String.valueOf(reservation.getTable()));
             fileWriter.append(",");
         }
